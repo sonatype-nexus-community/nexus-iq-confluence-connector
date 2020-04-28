@@ -1,8 +1,3 @@
-# nexus-iq-confluence-connector
-Feed Nexus IQ scan results into formatted Confluence pages
-
-
- 
  <!--
   Copyright 2017-present Sonatype, Inc.
 
@@ -18,7 +13,8 @@ Feed Nexus IQ scan results into formatted Confluence pages
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-# Copy Modules Plugin
+# nexus-iq-confluence-connector
+Feed Nexus IQ scan results into formatted Confluence pages
 
 # Table Of Contents
 * [Introduction](#introduction)
