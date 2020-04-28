@@ -6,4 +6,6 @@ RUN apk add --no-cache ca-certificates \
 
 COPY nexus-iq-confluence-connector /usr/local/bin/nexus-iq-confluence-connector
 
+EXPOSE 3001
+
 CMD ["nexus-iq-confluence-connector"]
