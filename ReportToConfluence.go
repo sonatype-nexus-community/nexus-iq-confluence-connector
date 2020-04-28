@@ -10,12 +10,12 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
-	"sonatypeWebhook"
 	"strconv"
 	"time"
 
 	"github.com/adamjwsuch/go-confluence"
 	"github.com/jinzhu/configor"
+	sonatypeWebhook "github.com/sonatype-nexus-community/nexus-webhook-example-collection"
 )
 
 const (
