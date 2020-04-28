@@ -1,0 +1,23 @@
+FROM alpine:latest as builder
+
+RUN apk update \
+    && apk upgrade \
+    && apk add --no-cache ca-certificates \
+    && update-ca-certificates 2>/dev/null || true \
+    && rm -rf /var/cache/apk/* 
+
+COPY nexus-iq-confluence-connector /
+
+#--------------------------------
+# Deployment Image
+#--------------------------------
+FROM scratch
+
+#Import from builder image
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /nexus-iq-confluence-connector /nexus-iq-confluence-connector
+
+EXPOSE 3001
+
+ENTRYPOINT [ "/nexus-iq-confluence-connector" ]

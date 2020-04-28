@@ -41,7 +41,7 @@ type Config struct {
 		URL              string `required:"true"`
 		User             string `required:"true"`
 		Password         string `required:"true"`
-		NoCsrfProtection bool   `default:false`
+		NoCsrfProtection bool   `default:"false"`
 	}
 	Webhook struct {
 		Secret string
@@ -54,7 +54,7 @@ type Config struct {
 		Spacekey   string `required:"true"`
 		Basepageid string
 	}
-	Verbose bool `default:false`
+	Verbose bool `default:"false"`
 }
 
 var verbose *bool
@@ -108,10 +108,10 @@ func main() {
 				fmt.Printf("Webhook error: %+v\n", err)
 			}
 		}
-		switch payload.(type) {
+		switch payload := payload.(type) {
 
 		case sonatypeWebhook.ApplicationEvaluationPayload:
-			AppEval := payload.(sonatypeWebhook.ApplicationEvaluationPayload)
+			AppEval := payload
 			if *verbose {
 				fmt.Printf("Webhook payload: %v\n", PrettyPrint(AppEval))
 			}
@@ -190,7 +190,10 @@ func reportFromTemplate(report *ReportContent) (string, error) {
 		return "", errors.New("error rendering template")
 	}
 	var tpl bytes.Buffer
-	t.Execute(&tpl, report)
+	err = t.Execute(&tpl, report)
+	if err != nil {
+		return "", errors.New("error rendering template")
+	}
 	return tpl.String(), nil
 }
 
@@ -231,9 +234,11 @@ func (server *serverInfo) apiCall(URL string) ([]byte, error) {
 	if server.csrfProtection {
 		var token *http.Cookie
 		token, err = sessionToken(server)
+		if err != nil {
+			panic(err)
+		}
 		req.Header.Set("X-CSRF-TOKEN", token.Value)
 		req.AddCookie(token)
-		// log.Printf("Using token: %s\n", token.Value)
 	}
 
 	var resp *http.Response
