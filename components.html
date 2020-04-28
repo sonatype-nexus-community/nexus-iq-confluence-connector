@@ -1,0 +1,69 @@
+<h1>Sonatype Component Report</h1>
+{{.MatchSummary.TotalComponentCount}} components found, {{.MatchSummary.KnownComponentCount}} recognised
+<br /><a href="{{.ReportLink}}">Report link</a>
+Stage: {{.Stage}}
+<br /><h2>License threats</h2>
+<table class="relative-table wrapped" style="width: 100.0%;">
+  <colgroup>
+    <col style="width: 25%;"/>
+    <col style="width: 25%;"/>
+    <col style="width: 25%;"/>
+    <col style="width: 25%;"/>
+  </colgroup>
+  <tbody>
+    <tr>
+        <td>
+            <p>Name</p>
+        </td>
+        <td>
+            <p>Classifier</p>
+        </td>
+        <td>
+            <p>Group ID</p>
+        </td>
+        <td>
+            <p>Version</p>
+        </td>
+        <td>
+            <p>Extension</p>
+        </td>
+        <td>
+            <p>Format</p>
+        </td>
+    </tr>
+    {{range $comp := .Components}}
+    <tr>
+        <td>
+            <p>
+            {{$comp.ComponentIdentifier.Coordinates.ArtifactID}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{$comp.ComponentIdentifier.Coordinates.Classifier}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{$comp.ComponentIdentifier.Coordinates.GroupID}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{$comp.ComponentIdentifier.Coordinates.Version}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{$comp.ComponentIdentifier.Coordinates.Extension}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{$comp.ComponentIdentifier.Formet}}
+            </p>
+        </td>
+    </tr>
+    {{end}}
+    </tbody>
+</table>

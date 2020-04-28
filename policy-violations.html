@@ -1,0 +1,55 @@
+<h1>Sonatype Build Report</h1>
+{{.MatchSummary.TotalComponentCount}} components found, {{.MatchSummary.KnownComponentCount}} recognised
+<br /><a href="{{.ReportLink}}">Report link</a>
+Stage: {{.Stage}}
+<h2>License threats</h2>
+<table class="relative-table wrapped" style="width: 100.0%;">
+  <colgroup>
+    <col style="width: 25%;"/>
+    <col style="width: 25%;"/>
+    <col style="width: 25%;"/>
+    <col style="width: 25%;"/>
+  </colgroup>
+  <tbody>
+    <tr>
+        <td>
+            <p>License threat group</p>
+        </td>
+        <td>
+            <p>Component</p>
+        </td>
+        <td>
+            <p>Threat group category</p>
+        </td>
+        <td>
+            <p>License threat level</p>
+        </td>
+    </tr>
+    {{range $comp := .Components}}
+        {{range $comp.LicenseData.EffectiveLicenseThreats}}
+    <tr>
+        <td>
+            <p>
+            {{.LicenseThreatGroupName}}
+            </p>
+        </td>
+        <td>
+            <p>
+            ArtifactID {{$comp.ComponentIdentifier.Coordinates.ArtifactID}}, GroupID {{$comp.ComponentIdentifier.Coordinates.GroupID}}, Version {{$comp.ComponentIdentifier.Coordinates.Version}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{.LicenseThreatGroupCategory}}
+            </p>
+        </td>
+        <td>
+            <p>
+            {{.LicenseThreatGroupLevel}}
+            </p>
+        </td>
+    </tr>
+        {{end}}
+    {{end}}
+    </tbody>
+</table>

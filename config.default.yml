@@ -1,0 +1,20 @@
+template: policy-violations.html                #Template to populate confluence pages from
+
+iq:
+    url: "http://localhost:8070"            #Full IQ server URL including port
+    user: admin
+    password: admin123
+    nocsrfprotection: false                 #Cross site script protection
+
+webhook:
+     secret  string  `default:""`           #Webhook secret, blank for disabled
+     port    uint    `default:"3001"`       #Port to listen for webhooks from IQ server on
+
+confluence:
+    url: "http://confluence.example.com"    #Full confluence URL including port
+    user: user
+    password: password
+    spacekey: TES       #The short key for the confluence space (note: not he full space name)
+    #basepageid: ""     #The confluence ID of the page to locate reports, if not specified they will be created at the space root
+
+verbose: false          #If enabled program will provide verbose output (can also be enabled by command line argument)

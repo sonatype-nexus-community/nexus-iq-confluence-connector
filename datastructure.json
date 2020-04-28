@@ -1,0 +1,50 @@
+Components []struct {
+     Hash                string `json:"hash"`
+     ComponentIdentifier struct {
+         Format      string `json:"format"`
+         Coordinates struct {
+             ArtifactID string `json:"artifactId"`
+             Classifier string `json:"classifier"`
+             Extension  string `json:"extension"`
+             GroupID    string `json:"groupId"`
+             Version    string `json:"version"`
+         } `json:"coordinates"`
+     } `json:"componentIdentifier"`
+     Proprietary bool     `json:"proprietary"`
+     MatchState  string   `json:"matchState"`
+     Pathnames   []string `json:"pathnames"`
+     LicenseData struct {
+         DeclaredLicenses []struct {
+             LicenseID   string `json:"licenseId"`
+             LicenseName string `json:"licenseName"`
+         } `json:"declaredLicenses"`
+         ObservedLicenses []struct {
+             LicenseID   string `json:"licenseId"`
+             LicenseName string `json:"licenseName"`
+         } `json:"observedLicenses"`
+         OverriddenLicenses      []interface{} `json:"overriddenLicenses"`
+         Status                  string        `json:"status"`
+         EffectiveLicenseThreats []struct {
+             LicenseThreatGroupName     string `json:"licenseThreatGroupName"`
+             LicenseThreatGroupLevel    int    `json:"licenseThreatGroupLevel"`
+             LicenseThreatGroupCategory string `json:"licenseThreatGroupCategory"`
+         } `json:"effectiveLicenseThreats"`
+     } `json:"licenseData"`
+     SecurityData struct {
+         SecurityIssues []struct {
+             Source         string      `json:"source"`
+             Reference      string      `json:"reference"`
+             Severity       float64     `json:"severity"`
+             Status         string      `json:"status"`
+             URL            interface{} `json:"url"`
+             ThreatCategory string      `json:"threatCategory"`
+         } `json:"securityIssues"`
+     } `json:"securityData"`
+ } `json:"components"`
+ MatchSummary struct {
+     TotalComponentCount int `json:"totalComponentCount"`
+     KnownComponentCount int `json:"knownComponentCount"`
+ } `json:"matchSummary"`
+ ReportLink  string
+ Stage       string
+ AppName     string
