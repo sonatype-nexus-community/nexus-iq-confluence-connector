@@ -14,7 +14,6 @@
   limitations under the License.
 -->
 # nexus-iq-confluence-connector
-Feed Nexus IQ scan results into formatted Confluence pages
 
 # Table Of Contents
 * [Introduction](#introduction)
@@ -26,9 +25,7 @@ Feed Nexus IQ scan results into formatted Confluence pages
 
 ## Introduction
 
-`copy-modules-webpack-plugin` is a Webpack plugin which copies all of the source files which go into the webpack
-bundle(s) to a separate directory. This enables external tools such as Sonatype Nexus Lifecycle to analyze only those
-source files which will be included in the final bundle.
+`nexus-iq-confluence-connector` feeds Nexus IQ scan results into formatted Confluence pages
 
 ## Installation
 
