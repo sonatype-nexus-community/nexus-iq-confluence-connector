@@ -1,1 +1,3 @@
-nexus-iq-confluence-connector 
+nexus-iq-confluence-connector
+dist
+.cache

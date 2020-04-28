@@ -1,0 +1,9 @@
+FROM alpine:latest
+
+RUN apk add --no-cache ca-certificates \
+    && update-ca-certificates 2>/dev/null || true \
+    && rm -rf /var/cache/apk/*
+
+COPY nexus-iq-confluence-connector /usr/local/bin/nexus-iq-confluence-connector
+
+CMD ["nexus-iq-confluence-connector"]

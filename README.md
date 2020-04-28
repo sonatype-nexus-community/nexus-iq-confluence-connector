@@ -30,7 +30,7 @@
 ## Installation
 
 ```
-go build
+make
 ```
 
 ## Usage
