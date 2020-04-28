@@ -18,4 +18,6 @@ COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /nexus-iq-confluence-connector /nexus-iq-confluence-connector
 
+EXPOSE 3001
+
 ENTRYPOINT [ "/nexus-iq-confluence-connector" ]
